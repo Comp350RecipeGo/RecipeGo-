@@ -15,6 +15,7 @@ struct RecipeGoNewPostView: View
     
     var body: some View
     {
+    
         VStack
         {
             HStack
@@ -26,7 +27,7 @@ struct RecipeGoNewPostView: View
             label:
                 {
                     Text("Cancel")
-                        .foregroundColor(Color(.systemGreen))
+                        .foregroundColor(.green)
                 }
                 
                 Spacer()
@@ -37,22 +38,19 @@ struct RecipeGoNewPostView: View
                 }
             label:
                 {
-                    Text("Recipe Post")
+                    Text("Share Recipe")
                         .bold()
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 8)
-                        .background(Color(.systemGreen))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .background(.green)
                         .foregroundColor(.white)
-                        .clipShape(Capsule())
+                        .cornerRadius(10)
                 }
             }
             .padding()
             
             HStack(alignment: .top)
             {
-                Circle()
-                    .frame(width: 64, height: 64)
-                
                 
                 RecipeGoTextView("Post your recipe here!", text: $RecipeCaption)
             }

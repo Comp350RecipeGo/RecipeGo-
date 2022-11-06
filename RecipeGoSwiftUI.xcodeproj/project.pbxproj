@@ -39,6 +39,7 @@
 		32F7D006290E547500701A7B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 32F7D005290E547500701A7B /* FirebaseFirestoreSwift */; };
 		32F7D008290E547500701A7B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32F7D007290E547500701A7B /* FirebaseStorage */; };
 		32F7D00A290E569800701A7B /* RecipeGoAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7D009290E569800701A7B /* RecipeGoAuthViewModel.swift */; };
+		F2A8069C2915C0A1003FB57D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2A8069B2915C0A1003FB57D /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 				32F7D002290E547500701A7B /* FirebaseAuth in Frameworks */,
 				32F7D008290E547500701A7B /* FirebaseStorage in Frameworks */,
 				32F7D004290E547500701A7B /* FirebaseFirestore in Frameworks */,
+				F2A8069C2915C0A1003FB57D /* FirebaseAnalytics in Frameworks */,
 				32F7D006290E547500701A7B /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,7 +205,6 @@
 		32D5352A290CCEA90080965E /* RecipeGoViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				32D9D6AB2912426C00C7C22C /* RecipeGoUploadPostViewModel.swift */,
 			);
 			path = RecipeGoViewModel;
 			sourceTree = "<group>";
@@ -212,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				32D5352C290CCEF70080965E /* RecipeGoNewPostView.swift */,
+				32D9D6AB2912426C00C7C22C /* RecipeGoUploadPostViewModel.swift */,
 			);
 			path = RecipeGoView;
 			sourceTree = "<group>";
@@ -221,6 +223,7 @@
 			children = (
 				32DB2CD12908ED67000C6E1F /* RecipeGoSwiftUI */,
 				32DB2CD02908ED67000C6E1F /* Products */,
+				F2A8069A2915C0A1003FB57D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -331,6 +334,13 @@
 			path = RecipeGoView;
 			sourceTree = "<group>";
 		};
+		F2A8069A2915C0A1003FB57D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -352,6 +362,7 @@
 				32F7D003290E547500701A7B /* FirebaseFirestore */,
 				32F7D005290E547500701A7B /* FirebaseFirestoreSwift */,
 				32F7D007290E547500701A7B /* FirebaseStorage */,
+				F2A8069B2915C0A1003FB57D /* FirebaseAnalytics */,
 			);
 			productName = RecipeGoSwiftUI;
 			productReference = 32DB2CCF2908ED67000C6E1F /* RecipeGoSwiftUI.app */;
@@ -668,6 +679,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 32F7D000290E547500701A7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		F2A8069B2915C0A1003FB57D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32F7D000290E547500701A7B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
