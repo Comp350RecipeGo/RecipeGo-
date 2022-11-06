@@ -74,18 +74,23 @@ extension RecipeGoContentView
         {
             ToolbarItem(placement: .navigationBarLeading)
             {
+                
                 Button
                 {
-                    withAnimation(.easeInOut)
+                    withAnimation()
                     {
                         displayMenu.toggle()
                     }
                 }
-            label:
+                label:
                 {
-                    Circle()
-                        .frame(width: 32, height: 32)
+                    Image(systemName: "line.horizontal.3")
+                        .imageScale(.large)
                 }
+                
+                Spacer()
+                
+                
             }
         }
         .onAppear

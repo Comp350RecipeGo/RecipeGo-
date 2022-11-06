@@ -10,16 +10,14 @@ import Foundation
 enum RecipePostFilterViewModel: Int, CaseIterable
 {
     case RecipePosts
-    case comments
-    case likes
+    case collections
     
     var title: String
     {
         switch self
         {
         case .RecipePosts: return "Recipe Posts"
-        case .comments: return "Comments"
-        case .likes: return "Likes"
+        case .collections: return "Collections"
         }
     }
 }

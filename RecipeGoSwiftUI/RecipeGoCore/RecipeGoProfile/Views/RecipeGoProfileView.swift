@@ -46,13 +46,12 @@ extension RecipeGoProfileView
     {
         ZStack(alignment: .bottomLeading)
         {
-            Color(.systemGreen)
+            Color(.systemBlue)
                 .ignoresSafeArea()
             
             VStack
             {
-                Button
-                {
+                Button {
                     mode.wrappedValue.dismiss()
                 }
             label:
@@ -61,7 +60,7 @@ extension RecipeGoProfileView
                         .resizable()
                         .frame(width: 20, height: 16)
                         .foregroundColor(.white)
-                        .offset(x: 16, y: 12)
+                        .offset(x: 1, y: 12)
                 }
                 
                 Circle()
@@ -69,7 +68,7 @@ extension RecipeGoProfileView
                     .offset(x: 16, y: 24)
             }
         }
-        .frame(height: 96)
+        .frame(height: 88)
     }
     
     var actionButtons: some View
@@ -77,23 +76,16 @@ extension RecipeGoProfileView
         HStack(spacing: 12)
         {
             Spacer()
-            
-            Image(systemName: "bell.badge")
-                .font(.title3)
-                .padding(6)
-                .overlay(Circle().stroke(Color.gray, lineWidth: 0.75))
-            
+
             Button
             {
                 
             }
         label:
             {
-                Text("Edit Profile")
-                    .font(.subheadline).bold()
-                    .frame(width: 120, height: 32)
-                    .foregroundColor(.black)
-                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray, lineWidth: 0.75))
+                Image(systemName: "gearshape")
+                    .foregroundColor(.blue)
+                    .padding(.vertical, 1)
             }
         }
         .padding(.trailing)
@@ -106,25 +98,20 @@ extension RecipeGoProfileView
             HStack
             {
                 Text("Bob Smith")
-                    .font(.title2).bold()
-                
-                Image(systemName: "checkmark.seal.fill")
-                    .foregroundColor(Color(.systemGreen))
+                    .font(.title3).bold()
+                Spacer()
+               
             }
-            
-            Text("@bsmith")
-                .font(.subheadline)
-                .foregroundColor(.gray)
-            
+        
             Text("Professional Chief")
                 .font(.subheadline)
-                .padding(.vertical)
+                .padding(.vertical, 2)
             
-            HStack(spacing: 24)
+            HStack(spacing: 20)
             {
                 HStack
                 {
-                    Image(systemName: "mapping.and.ellipse")
+                    Image(systemName: "mappin.and.ellipse")
                     Text("Los Angeles, CA")
                 }
                 
@@ -133,18 +120,22 @@ extension RecipeGoProfileView
                     Image(systemName: "link")
                     Text("www.bsmith.com")
                 }
+                
             }
             .font(.caption)
             .foregroundColor(.gray)
+            .padding(.vertical, 5)
             
             RecipeGoUserStatsView()
-                .padding(.vertical)
+            .padding(.vertical, 10)
+              
         }
         .padding(.horizontal)
     }
     
     var postFilterBar: some View
     {
+        // TODO insert option for collections
         HStack
         {
             ForEach(RecipePostFilterViewModel.allCases, id: \.rawValue)
@@ -160,15 +151,15 @@ extension RecipeGoProfileView
                     if selectFilter == item
                     {
                         Capsule()
-                            .foregroundColor(Color(.clear))
-                            .frame(height: 3)
+                            .foregroundColor(.blue)
+                            .frame(height: 2)
                             .matchedGeometryEffect(id: "filter", in: animation)
                     }
                     else
                     {
                         Capsule()
                             .foregroundColor(Color(.clear))
-                            .frame(height: 3)
+                            .frame(height: 2)
                     }
                 }
                 .onTapGesture

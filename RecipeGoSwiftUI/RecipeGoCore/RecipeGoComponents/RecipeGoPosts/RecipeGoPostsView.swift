@@ -45,17 +45,6 @@ struct RecipeGoPostsView: View
             //action buttons
             HStack
             {
-                Button
-                {
-                    
-                }
-            label:
-                {
-                    Image(systemName: "bubble.left")
-                        .font(.subheadline)
-                }
-                
-                Spacer()
                 
                 Button
                 {
@@ -63,10 +52,9 @@ struct RecipeGoPostsView: View
                 }
             label:
                 {
-                    Image(systemName: "arrow.2.squarepath")
-                        .font(.subheadline)
+                    Image(systemName: "square.and.arrow.up")
+                            .font(.subheadline)
                 }
-                
                 Spacer()
                 
                 Button
@@ -77,9 +65,19 @@ struct RecipeGoPostsView: View
                 {
                     Image(systemName: "heart")
                         .font(.subheadline)
+                        .padding(.horizontal, 6)
                 }
                 
-                Spacer()
+                Button
+                {
+                    
+                }
+            label:
+                {
+                    Image(systemName: "bubble.right")
+                        .font(.subheadline)
+                        .padding(.horizontal, 6)
+                }
                 
                 Button
                 {
@@ -89,6 +87,7 @@ struct RecipeGoPostsView: View
                 {
                     Image(systemName: "bookmark")
                         .font(.subheadline)
+                        .padding(.horizontal, 6)
                 }
             }
             .padding()

@@ -33,13 +33,13 @@ struct RecipeGoFeedView: View
             }
         label:
             {
-                Image(systemName: "square.and.pencil")
+                Image(systemName: "square.and.pencil.circle.fill")
                     .resizable()
                     .renderingMode(.template)
                     .frame(width: 40, height: 40)
                     .padding()
             }
-            .foregroundColor(.green)
+            .foregroundColor(.blue)
             .clipShape(Circle())
             .padding()
             .fullScreenCover(isPresented: $makeNewPostView) {
