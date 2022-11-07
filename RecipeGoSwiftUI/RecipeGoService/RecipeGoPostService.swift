@@ -9,12 +9,12 @@ import Firebase
 
 struct RecipeGoPostService
 {
-    func uploadPost(postCaption: String, successful: @escaping(Bool) -> Void)
+    func uploadPost(caption: String, completion: @escaping(Bool) -> Void)
     {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let data = ["uid": uid,
-                    "caption": postCaption,
+                    "caption": caption,
                     "likes": 0,
                     "timestamp": Timestamp(date: Date())] as [String : Any]
         
@@ -25,10 +25,34 @@ struct RecipeGoPostService
             if let error = errormessage
             {
                 print("DEBUG: Failed to upload post, error: \(error.localizedDescription)")
-                successful(false)
+                completion(false)
                 return
             }
-            successful(true)
+            completion(true)
+        }
+    }
+    
+    func fetchPosts(completion: @escaping([Post]) -> Void)
+    {
+        Firestore.firestore().collection("Recipe posts")
+            .order(by: "timestamp", descending: true)
+            .getDocuments
+        { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            let posts = documents.compactMap({ try? $0.data(as: Post.self) })
+            completion(posts)
+        }
+    }
+    
+    func fetchPosts(forUid uid: String, completion: @escaping([Post]) -> Void)
+    {
+        Firestore.firestore().collection("Recipe posts")
+            .whereField("uid", isEqualTo: uid)
+            .getDocuments
+        { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            let posts = documents.compactMap({ try? $0.data(as: Post.self) })
+            completion(posts.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
         }
     }
 }

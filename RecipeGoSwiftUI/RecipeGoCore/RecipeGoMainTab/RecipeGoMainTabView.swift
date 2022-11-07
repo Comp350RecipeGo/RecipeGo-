@@ -10,54 +10,58 @@ import SwiftUI
 struct RecipeGoMainTabView: View
 {
     @State private var index = 0
+    @EnvironmentObject var AuthViewModel: RecipeGoAuthViewModel
     
     var body: some View
     {
-        TabView(selection: $index)
+        if let user = AuthViewModel.currentUser
         {
-            RecipeGoFeedView()
-                .onTapGesture
+            TabView(selection: $index)
             {
-                self.index = 0
+                RecipeGoFeedView()
+                    .onTapGesture
+                {
+                    self.index = 0
+                }
+                .tabItem
+                {
+                    Image(systemName: "house")
+                }
+                .tag(0)
+                
+                RecipeGoExploreView()
+                    .onTapGesture
+                {
+                    self.index = 1
+                }
+                .tabItem
+                {
+                    Image(systemName: "magnifyingglass")
+                }
+                .tag(1)
+                
+                RecipeGoNotificationsView()
+                    .onTapGesture
+                {
+                    self.index = 2
+                }
+                .tabItem
+                {
+                    Image(systemName: "bell")
+                }
+                .tag(2)
+                
+                RecipeGoProfileView(user: user)
+                    .onTapGesture
+                {
+                    self.index = 3
+                }
+                .tabItem
+                {
+                    Image(systemName: "person")
+                }
+                .tag(3)
             }
-            .tabItem
-            {
-                Image(systemName: "house")
-            }
-            .tag(0)
-            
-            RecipeGoExploreView()
-                .onTapGesture
-            {
-                self.index = 1
-            }
-            .tabItem
-            {
-                Image(systemName: "magnifyingglass")
-            }
-            .tag(1)
-            
-            RecipeGoNotificationsView()
-                .onTapGesture
-            {
-                self.index = 2
-            }
-            .tabItem
-            {
-                Image(systemName: "bell")
-            }
-            .tag(2)
-            
-            RecipeGoProfileView()
-                .onTapGesture
-            {
-                self.index = 3
-            }
-            .tabItem
-            {
-                Image(systemName: "person")
-            }
-            .tag(3)
         }
     }
 }

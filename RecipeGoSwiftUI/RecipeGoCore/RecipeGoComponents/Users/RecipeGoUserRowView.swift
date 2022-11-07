@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeGoUserRowView: View
 {
+    let user: User
+    
     var body: some View
     {
         HStack(spacing: 12)
@@ -18,11 +20,11 @@ struct RecipeGoUserRowView: View
             
             VStack(alignment: .leading, spacing: 4)
             {
-                Text("bsmith")
+                Text(user.UserName)
                     .font(.subheadline).bold()
                     .foregroundColor(.black)
                 
-                Text("Bob Smith")
+                Text(user.FullName)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -30,13 +32,5 @@ struct RecipeGoUserRowView: View
         }
         .padding(.horizontal)
         .padding(.vertical, 4)
-    }
-}
-
-struct UserRowView_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
-        RecipeGoUserRowView()
     }
 }

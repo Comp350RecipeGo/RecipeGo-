@@ -9,6 +9,8 @@ import SwiftUI
 
 struct RecipeGoPostsView: View
 {
+    let post: Post
+    
     var body: some View
     {
         VStack(alignment: .leading)
@@ -23,21 +25,24 @@ struct RecipeGoPostsView: View
                 VStack (alignment: .leading, spacing: 4)
                 {
                     //User info
-                    HStack
+                    if let user = post.user
                     {
-                        Text("Ramtin Saremi")
-                            .font(.subheadline).bold()
-                        
-                        Text("@ramtin1")
-                            .foregroundColor(.gray)
-                            .font(.caption)
-                        
-                        Text("3w")
-                            .foregroundColor(.gray)
-                            .font(.caption)
+                        HStack
+                        {
+                            Text(user.FullName)
+                                .font(.subheadline).bold()
+                            
+                            Text("@\(user.UserName)")
+                                .foregroundColor(.gray)
+                                .font(.caption)
+                            
+                            Text("3w")
+                                .foregroundColor(.gray)
+                                .font(.caption)
+                        }
                     }
                     //Recipe post caption
-                    Text("Mac and Cheese Recipe")
+                    Text(post.caption)
                         .font(.subheadline)
                         .multilineTextAlignment(.leading)
                 }
@@ -99,10 +104,3 @@ struct RecipeGoPostsView: View
     }
 }
 
-struct RecipeGoPostsView_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
-        RecipeGoPostsView()
-    }
-}
