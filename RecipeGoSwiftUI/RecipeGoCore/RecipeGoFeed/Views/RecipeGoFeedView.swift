@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeGoFeedView: View
 {
     @State private var makeNewPostView = false
+    @ObservedObject var ViewModel = RecipeGoFeedViewModel()
     
     var body: some View
     {
@@ -19,10 +20,9 @@ struct RecipeGoFeedView: View
             {
                 LazyVStack
                 {
-                    ForEach(0 ... 20, id: \.self)
-                    {
-                        _ in
-                        RecipeGoPostsView()
+                    ForEach(ViewModel.posts)
+                    { post in
+                        RecipeGoPostsView(post: post)
                     }
                 }
             }
@@ -46,6 +46,7 @@ struct RecipeGoFeedView: View
                 RecipeGoNewPostView()
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

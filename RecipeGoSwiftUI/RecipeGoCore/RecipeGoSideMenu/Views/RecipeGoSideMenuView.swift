@@ -13,59 +13,62 @@ struct RecipeGoSideMenuView: View
     
     var body: some View
     {
-        VStack(alignment: .leading, spacing: 32)
+        if let user = AuthViewModel.currentUser
         {
-            VStack(alignment: .leading)
+            VStack(alignment: .leading, spacing: 32)
             {
-                Circle()
-                    .frame(width: 48, height: 48)
-                
-                VStack(alignment: .leading, spacing: 4)
+                VStack(alignment: .leading)
                 {
-                    Text("Ramtin Saremi")
-                        .font(.headline)
+                    Circle()
+                        .frame(width: 48, height: 48)
                     
-                    Text("@ramtin1")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                    VStack(alignment: .leading, spacing: 4)
+                    {
+                        Text(user.FullName)
+                            .font(.headline)
+                        
+                        Text("@\(user.UserName)")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                    RecipeGoUserStatsView()
+                        .padding(.vertical)
                 }
-                RecipeGoUserStatsView()
-                    .padding(.vertical)
-            }
-            .padding(.leading)
-            
-            ForEach(RecipeGoSideMenuViewModel.allCases, id: \.rawValue)
-            {
-                viewModel in
+                .padding(.leading)
                 
-                if viewModel == .RecipeGoProfile
+                ForEach(RecipeGoSideMenuViewModel.allCases, id: \.rawValue)
                 {
-                    NavigationLink
+                    viewModel in
+                    
+                    if viewModel == .RecipeGoProfile
                     {
-                        RecipeGoProfileView()
+                        NavigationLink
+                        {
+                            RecipeGoProfileView(user: user)
+                        }
+                    label:
+                        {
+                            RecipeGoSideMenuOptionView(viewModel: viewModel)
+                        }
                     }
-                label:
+                    else if viewModel == .RecipeGoLogout
+                    {
+                        Button
+                        {
+                            AuthViewModel.LogOut()
+                        }
+                    label:
+                        {
+                            RecipeGoSideMenuOptionView(viewModel: viewModel)
+                        }
+                    }
+                    else
                     {
                         RecipeGoSideMenuOptionView(viewModel: viewModel)
                     }
                 }
-                else if viewModel == .RecipeGoLogout
-                {
-                    Button
-                    {
-                        AuthViewModel.LogOut()
-                    }
-                label:
-                    {
-                        RecipeGoSideMenuOptionView(viewModel: viewModel)
-                    }
-                }
-                else
-                {
-                    RecipeGoSideMenuOptionView(viewModel: viewModel)
-                }
+                Spacer()
             }
-            Spacer()
         }
     }
 }

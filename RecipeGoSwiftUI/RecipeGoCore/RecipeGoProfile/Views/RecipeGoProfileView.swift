@@ -9,9 +9,15 @@ import SwiftUI
 
 struct RecipeGoProfileView: View
 {
-    @State private var selectFilter: RecipePostFilterViewModel = .RecipePosts
+    @State private var selectFilter: RecipePostFilterViewModel = .posts
+    @ObservedObject var ViewModel: RecipeGoProfileViewModel
     @Environment(\.presentationMode) var mode
     @Namespace var animation
+    
+    init(user: User)
+    {
+        self.ViewModel = RecipeGoProfileViewModel(user: user)
+    }
     
     var body: some View
     {
@@ -25,20 +31,23 @@ struct RecipeGoProfileView: View
             
             postFilterBar
             
-            postView
+            postsView
             
             Spacer()
         }
     }
 }
 
-struct RecipeGoProfileView_Previews: PreviewProvider
+/*struct RecipeGoProfileView_Previews: PreviewProvider
 {
     static var previews: some View
     {
-        RecipeGoProfileView()
+        RecipeGoProfileView(user: User(id: NSUUID().uuidString,
+                                      UserName: "batman",
+                                      FullName: "Bruce Wayne",
+                                       Email: "batman@gmail.com"))
     }
-}
+}*/
 
 extension RecipeGoProfileView
 {
@@ -97,11 +106,15 @@ extension RecipeGoProfileView
         {
             HStack
             {
-                Text("Bob Smith")
+                Text(ViewModel.user.FullName)
                     .font(.title3).bold()
                 Spacer()
                
             }
+            
+            Text("@\(ViewModel.user.UserName)")
+                .font(.subheadline)
+                .foregroundColor(.gray)
         
             Text("Professional Chief")
                 .font(.subheadline)
@@ -118,7 +131,7 @@ extension RecipeGoProfileView
                 HStack
                 {
                     Image(systemName: "link")
-                    Text("www.bsmith.com")
+                    Text("www.user.com")
                 }
                 
             }
@@ -139,8 +152,7 @@ extension RecipeGoProfileView
         HStack
         {
             ForEach(RecipePostFilterViewModel.allCases, id: \.rawValue)
-            {
-                item in
+            { item in
                 VStack
                 {
                     Text(item.title)
@@ -174,16 +186,15 @@ extension RecipeGoProfileView
         .overlay(Divider().offset(x: 0, y: 16))
     }
     
-    var postView: some View
+    var postsView: some View
     {
         ScrollView
         {
             LazyVStack
             {
-                ForEach(0 ... 9, id: \.self)
-                {
-                    _ in
-                    RecipeGoPostsView()
+                ForEach(ViewModel.posts)
+                { post in
+                    RecipeGoPostsView(post: post)
                 }
             }
         }

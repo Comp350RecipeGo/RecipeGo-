@@ -10,11 +10,11 @@ import Foundation
 class RecipeGoUploadPostViewModel: ObservableObject
 {
     @Published var postUploaded = false
-    let postService = RecipeGoPostService()
+    let service = RecipeGoPostService()
     
     func uploadPost(withCaption caption: String)
     {
-        postService.uploadPost(postCaption: caption)
+        service.uploadPost(caption: caption)
         {
             uploadSuccessfull in
             if uploadSuccessfull

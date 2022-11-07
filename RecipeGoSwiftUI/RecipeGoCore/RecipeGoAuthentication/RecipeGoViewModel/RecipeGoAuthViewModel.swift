@@ -12,11 +12,13 @@ class RecipeGoAuthViewModel: ObservableObject
 {
     @Published var userSession: FirebaseAuth.User?
     @Published var userAuthenticated = false
+    @Published var currentUser: User?
+    private var service = RecipeGoUserService()
     
     init()
     {
         self.userSession = Auth.auth().currentUser
-        print("ERROR: User session is \(String(describing: self.userSession?.uid))")
+        self.fetchUser()
     }
     
     func login(WithEmail UserEmail: String, UserPassword: String)
@@ -71,5 +73,13 @@ class RecipeGoAuthViewModel: ObservableObject
     {
         userSession = nil
         try? Auth.auth().signOut()
+    }
+    
+    func fetchUser()
+    {
+        guard let uid = self.userSession?.uid else { return }
+        service.fetchUser(withUid: uid) { user in
+            self.currentUser = user
+        }
     }
 }

@@ -9,26 +9,30 @@ import SwiftUI
 
 struct RecipeGoExploreView: View
 {
+    @ObservedObject var ViewModel = RecipeGoExploreViewModel()
+    
     var body: some View
     {
         NavigationView
         {
             VStack
             {
+                RecipeGoSearchBar(text: $ViewModel.searchText)
+                    .padding()
+                
                 ScrollView
                 {
                     LazyVStack
                     {
-                        ForEach(0 ... 25, id: \.self)
-                        {
-                            _ in
+                        ForEach(ViewModel.availableUsers, id: \.self)
+                        { user in
                             NavigationLink
                             {
-                                RecipeGoProfileView()
+                                RecipeGoProfileView(user: user)
                             }
                         label:
                             {
-                                RecipeGoUserRowView()
+                                RecipeGoUserRowView(user: user)
                             }
                         }
                     }
