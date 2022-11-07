@@ -48,7 +48,7 @@ struct RecipeGoPostsView: View
                 
                 Button
                 {
-                    
+                    shareButton()
                 }
             label:
                 {
@@ -98,6 +98,13 @@ struct RecipeGoPostsView: View
         .padding()
     }
 }
+
+func shareButton() {
+    let url = "https://www.discord.com"
+    let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+    UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+}
+
 
 struct RecipeGoPostsView_Previews: PreviewProvider
 {
