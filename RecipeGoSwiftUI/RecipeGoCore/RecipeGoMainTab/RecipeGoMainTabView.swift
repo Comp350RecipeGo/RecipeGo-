@@ -40,27 +40,41 @@ struct RecipeGoMainTabView: View
                 }
                 .tag(1)
                 
-                RecipeGoNotificationsView()
-                    .onTapGesture
+                PostSelectionView()
+                .onTapGesture
                 {
                     self.index = 2
+                        
                 }
                 .tabItem
                 {
-                    Image(systemName: "bell")
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
                 }
                 .tag(2)
                 
-                RecipeGoProfileView(user: user)
+                RecipeGoNotificationsView()
                     .onTapGesture
                 {
                     self.index = 3
                 }
                 .tabItem
                 {
-                    Image(systemName: "person")
+                    Image(systemName: "bell")
                 }
                 .tag(3)
+                
+                RecipeGoProfileView(user: user)
+                    .onTapGesture
+                {
+                    self.index = 4
+                }
+                .tabItem
+                {
+                    Image(systemName: "person")
+                }
+                .tag(4)
             }
         }
     }

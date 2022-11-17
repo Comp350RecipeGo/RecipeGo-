@@ -39,7 +39,7 @@ struct RecipeGoFeedView: View
                     .frame(width: 40, height: 40)
                     .padding()
             }
-            .foregroundColor(.blue)
+            .foregroundColor(Color(.systemGreen))
             .clipShape(Circle())
             .padding()
             .fullScreenCover(isPresented: $makeNewPostView) {
