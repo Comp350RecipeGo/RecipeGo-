@@ -112,17 +112,4 @@ struct RecipeGoPostsView: View
     
 }
 
-func shareButton() {
-    let url = "https://www.discord.com"
-    let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-    UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
-}
 
-
-struct RecipeGoPostsView_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
-        RecipeGoPostsView()
-    }
-}
