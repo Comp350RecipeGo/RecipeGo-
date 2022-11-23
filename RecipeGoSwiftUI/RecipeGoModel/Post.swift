@@ -16,4 +16,5 @@ struct Post: Identifiable, Decodable, Hashable
     let timestamp: Timestamp
     let uid: String
     var user: User?
+    var postLiked: Bool? = false
 }

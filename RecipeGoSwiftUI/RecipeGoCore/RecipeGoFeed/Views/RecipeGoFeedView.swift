@@ -26,25 +26,6 @@ struct RecipeGoFeedView: View
                     }
                 }
             }
-            
-            Button
-            {
-                makeNewPostView.toggle()
-            }
-        label:
-            {
-                Image(systemName: "square.and.pencil.circle.fill")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 40, height: 40)
-                    .padding()
-            }
-            .foregroundColor(Color(.systemGreen))
-            .clipShape(Circle())
-            .padding()
-            .fullScreenCover(isPresented: $makeNewPostView) {
-                RecipeGoNewPostView()
-            }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
