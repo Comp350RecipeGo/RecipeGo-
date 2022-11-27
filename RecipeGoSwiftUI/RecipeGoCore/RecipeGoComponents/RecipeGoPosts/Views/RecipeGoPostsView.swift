@@ -9,7 +9,12 @@ import SwiftUI
 
 struct RecipeGoPostsView: View
 {
-    let post: Post
+    @ObservedObject var ViewModel: RecipeGoPostsViewModel
+    
+    init(post: Post)
+    {
+        self.ViewModel = RecipeGoPostsViewModel(post: post)
+    }
     
     var body: some View
     {
@@ -25,7 +30,7 @@ struct RecipeGoPostsView: View
                 VStack (alignment: .leading, spacing: 4)
                 {
                     //User info
-                    if let user = post.user
+                    if let user = ViewModel.post.user
                     {
                         HStack
                         {
@@ -42,7 +47,7 @@ struct RecipeGoPostsView: View
                         }
                     }
                     //Recipe post caption
-                    Text(post.caption)
+                    Text(ViewModel.post.caption)
                         .font(.subheadline)
                         .multilineTextAlignment(.leading)
                 }
@@ -64,13 +69,14 @@ struct RecipeGoPostsView: View
                 
                 Button
                 {
-                    
+                    ViewModel.post.postLiked ?? false ? ViewModel.unlikePost() : ViewModel.likePost()
                 }
             label:
                 {
-                    Image(systemName: "heart")
+                    Image(systemName: ViewModel.post.postLiked ?? false ? "heart.fill" : "heart")
                         .font(.subheadline)
                         .padding(.horizontal, 6)
+                        .foregroundColor(ViewModel.post.postLiked ?? false ? .red : .gray)
                 }
                 
                 Button

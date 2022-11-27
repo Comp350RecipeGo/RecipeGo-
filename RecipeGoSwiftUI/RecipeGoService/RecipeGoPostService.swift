@@ -55,4 +55,56 @@ struct RecipeGoPostService
             completion(posts.sorted(by: { $0.timestamp.dateValue() > $1.timestamp.dateValue() }))
         }
     }
+    
+    func likePost(_ post: Post, completion: @escaping() -> Void)
+    {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let postId = post.id else { return }
+        
+        let userLikesReference = Firestore.firestore().collection("Users")
+            .document(uid)
+            .collection("User-likes")
+        
+        Firestore.firestore().collection("Recipe posts").document(postId)
+            .updateData(["likes": post.likes + 1])
+        { _ in
+            userLikesReference.document(postId).setData([:])
+            { _ in
+                completion()
+            }
+        }
+    }
+    
+    func checkLikedPosts(_ post: Post, completion: @escaping(Bool) -> Void)
+    {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let postId = post.id else { return }
+        
+        Firestore.firestore().collection("Users")
+            .document(uid)
+            .collection("User-likes")
+            .document(postId).getDocument
+        { snapshot, _ in
+            guard let snapshot = snapshot else { return }
+            completion(snapshot.exists)
+        }
+    }
+    
+    func unlikePost (_ post: Post, completion: @escaping() -> Void)
+    {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let postId = post.id else { return }
+        guard post.likes > 0 else { return }
+        
+        let userLikesReference = Firestore.firestore().collection("Users").document(uid).collection("User-likes")
+        
+        Firestore.firestore().collection("Recipe posts").document(postId)
+            .updateData(["likes": post.likes - 1])
+        { _ in
+            userLikesReference.document(postId).delete
+            { _ in
+                completion()
+            }
+        }
+    }
 }
