@@ -40,7 +40,7 @@ struct RecipeGoMainTabView: View
                 }
                 .tag(1)
                 
-                PostSelectionView()
+                RecipeGoNewPostView()
                 .onTapGesture
                 {
                     self.index = 2
@@ -54,27 +54,16 @@ struct RecipeGoMainTabView: View
                 }
                 .tag(2)
                 
-                RecipeGoNotificationsView()
+                RecipeGoProfileView(user: user)
                     .onTapGesture
                 {
                     self.index = 3
                 }
                 .tabItem
                 {
-                    Image(systemName: "bell")
-                }
-                .tag(3)
-                
-                RecipeGoProfileView(user: user)
-                    .onTapGesture
-                {
-                    self.index = 4
-                }
-                .tabItem
-                {
                     Image(systemName: "person")
                 }
-                .tag(4)
+                .tag(3)
             }
         }
     }

@@ -55,27 +55,15 @@ extension RecipeGoProfileView
     {
         ZStack(alignment: .bottomLeading)
         {
-            Color(.systemBlue)
+            Color(.systemGreen)
                 .ignoresSafeArea()
             
-            VStack
-            {
-                Button {
-                    mode.wrappedValue.dismiss()
-                }
-            label:
-                {
-                    Image(systemName: "arrow.left")
-                        .resizable()
-                        .frame(width: 20, height: 16)
-                        .foregroundColor(.white)
-                        .offset(x: 1, y: 12)
-                }
-                
-                Circle()
-                    .frame(width:72, height: 72)
-                    .offset(x: 16, y: 24)
-            }
+//            VStack
+//            {
+//                Circle()
+//                    .frame(width:72, height: 72)
+//                    .offset(x: 16, y: 24)
+//            }
         }
         .frame(height: 88)
     }
@@ -86,17 +74,17 @@ extension RecipeGoProfileView
         {
             Spacer()
             
-            Button
-            {
-                
-            }
-        label:
-            {
-                Image(systemName: "gearshape")
-                    .foregroundColor(.blue)
-                    .padding(.vertical, 1)
-                
-            }
+//            Button
+//            {
+//
+//            }
+//            label:
+//            {
+//                Image(systemName: "gearshape")
+//                    .foregroundColor(.blue)
+//                    .padding(.vertical, 1)
+//
+//            }
         }
         .padding(.trailing)
     }
@@ -127,12 +115,6 @@ extension RecipeGoProfileView
                 {
                     Image(systemName: "mappin.and.ellipse")
                     Text("Los Angeles, CA")
-                }
-                
-                HStack
-                {
-                    Image(systemName: "link")
-                    Text("www.user.com")
                 }
                 
             }

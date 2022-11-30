@@ -40,12 +40,12 @@ struct RecipeGoPostsView: View
                             Text("@\(user.UserName)")
                                 .foregroundColor(.gray)
                                 .font(.caption)
-                            
-                            Text("3w")
-                                .foregroundColor(.gray)
-                                .font(.caption)
                         }
                     }
+                    //Recipe post title
+                    Text(ViewModel.post.title)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
                     //Recipe post caption
                     Text(ViewModel.post.caption)
                         .font(.subheadline)
@@ -77,17 +77,6 @@ struct RecipeGoPostsView: View
                         .font(.subheadline)
                         .padding(.horizontal, 6)
                         .foregroundColor(ViewModel.post.postLiked ?? false ? .red : .gray)
-                }
-                
-                Button
-                {
-                    
-                }
-            label:
-                {
-                    Image(systemName: "bubble.right")
-                        .font(.subheadline)
-                        .padding(.horizontal, 6)
                 }
                 
                 Button
