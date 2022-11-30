@@ -10,14 +10,14 @@ import Foundation
 enum RecipePostFilterViewModel: Int, CaseIterable
 {
     case posts
-    case collections
+    case pins
     
     var title: String
     {
         switch self
         {
         case .posts: return "Recipe Posts"
-        case .collections: return "Collections"
+        case .pins: return "Pins"
         }
     }
 }
