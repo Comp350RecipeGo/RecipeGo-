@@ -47,6 +47,7 @@
 		32F7D006290E547500701A7B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 32F7D005290E547500701A7B /* FirebaseFirestoreSwift */; };
 		32F7D008290E547500701A7B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 32F7D007290E547500701A7B /* FirebaseStorage */; };
 		32F7D00A290E569800701A7B /* RecipeGoAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F7D009290E569800701A7B /* RecipeGoAuthViewModel.swift */; };
+		9C6CC7852933F38300CB2D28 /* NewPostTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6CC7842933F38300CB2D28 /* NewPostTemplate.swift */; };
 		F29552932922454E005E3EFC /* PostSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29552922922454E005E3EFC /* PostSelectionView.swift */; };
 		F2A8069C2915C0A1003FB57D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F2A8069B2915C0A1003FB57D /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		32F7CFFC290E1F4700701A7B /* RegisterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterHeaderView.swift; sourceTree = "<group>"; };
 		32F7CFFE290E53E500701A7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		32F7D009290E569800701A7B /* RecipeGoAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeGoAuthViewModel.swift; sourceTree = "<group>"; };
+		9C6CC7842933F38300CB2D28 /* NewPostTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostTemplate.swift; sourceTree = "<group>"; };
 		F29552922922454E005E3EFC /* PostSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				32D5352C290CCEF70080965E /* RecipeGoNewPostView.swift */,
+				9C6CC7842933F38300CB2D28 /* NewPostTemplate.swift */,
 			);
 			path = RecipeGoView;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				321E80602908F966005076C7 /* RecipeGoMainTabView.swift in Sources */,
 				32857F25291921920025C740 /* RecipeGoExploreViewModel.swift in Sources */,
 				32857F22291915290025C740 /* User.swift in Sources */,
+				9C6CC7852933F38300CB2D28 /* NewPostTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
