@@ -46,6 +46,7 @@ struct RecipeGoNewPostView: View
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+                
             }
             .padding()
             

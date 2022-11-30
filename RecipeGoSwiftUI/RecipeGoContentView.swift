@@ -68,7 +68,7 @@ extension RecipeGoContentView
                 .offset(x: displayMenu ? 0 : -300, y: 0)
                 .background(displayMenu ? Color.white : Color.clear)
         }
-        .navigationTitle("Home")
+       // .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar
         {

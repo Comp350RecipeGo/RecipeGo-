@@ -92,13 +92,14 @@ struct RecipeGoPostsView: View
                 
                 Button
                 {
-                    
+                    ViewModel.post.postPinned ?? false ? ViewModel.unpinPost() : ViewModel.pinnedPost()
                 }
             label:
                 {
-                    Image(systemName: "bookmark")
-                        .font(.subheadline)
-                        .padding(.horizontal, 6)
+                Image(systemName: ViewModel.post.postPinned ?? false ? "pin.fill" : "pin")
+                    .font(.subheadline)
+                    .padding(.horizontal, 6)
+                    .foregroundColor(ViewModel.post.postPinned ?? false ? .red : .gray)
                 }
             }
             .padding()

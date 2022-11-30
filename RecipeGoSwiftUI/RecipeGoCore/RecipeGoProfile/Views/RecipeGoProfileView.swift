@@ -85,7 +85,7 @@ extension RecipeGoProfileView
         HStack(spacing: 12)
         {
             Spacer()
-
+            
             Button
             {
                 
@@ -95,6 +95,7 @@ extension RecipeGoProfileView
                 Image(systemName: "gearshape")
                     .foregroundColor(.blue)
                     .padding(.vertical, 1)
+                
             }
         }
         .padding(.trailing)
@@ -192,9 +193,10 @@ extension RecipeGoProfileView
         {
             LazyVStack
             {
-                ForEach(ViewModel.posts)
+                ForEach(ViewModel.posts(forFilter: self.selectFilter))
                 { post in
                     RecipeGoPostsView(post: post)
+                        .padding()
                 }
             }
         }

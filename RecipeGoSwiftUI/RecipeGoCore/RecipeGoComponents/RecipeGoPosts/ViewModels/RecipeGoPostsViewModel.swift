@@ -16,6 +16,7 @@ class RecipeGoPostsViewModel: ObservableObject
     {
         self.post = post
         checkLikedPosts()
+        checkPinnedPosts()
     }
     
     func likePost()
@@ -44,4 +45,31 @@ class RecipeGoPostsViewModel: ObservableObject
             self.post.postLiked = false
         }
     }
+    
+    func pinnedPost()
+    {
+        service.pinnedPost(post)
+        {
+            self.post.postPinned = true
+        }
+    }
+    
+    func checkPinnedPosts()
+    {
+        service.checkPinnedPosts(post)
+        { postPinned in
+            if postPinned
+            {
+                self.post.postPinned = true
+            }
+        }
+    }
+    func unpinPost()
+    {
+        service.unpinPost(post)
+        {
+            self.post.postPinned = false
+        }
+    }
+    
 }
