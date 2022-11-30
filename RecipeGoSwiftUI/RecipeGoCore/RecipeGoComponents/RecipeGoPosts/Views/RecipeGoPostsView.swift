@@ -58,7 +58,7 @@ struct RecipeGoPostsView: View
                 
                 Button
                 {
-                    
+                    shareButton(Info: ViewModel.post.caption)
                 }
             label:
                 {
@@ -109,5 +109,13 @@ struct RecipeGoPostsView: View
         }
         .padding()
     }
+    
+    func shareButton(Info: String) {
+            let url = Info
+        
+           let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+           UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+       }
+
 }
 
