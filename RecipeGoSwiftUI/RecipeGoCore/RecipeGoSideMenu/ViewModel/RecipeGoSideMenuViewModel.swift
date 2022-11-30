@@ -10,8 +10,8 @@ import Foundation
 enum RecipeGoSideMenuViewModel: Int, CaseIterable
 {
     case RecipeGoProfile
-    case RecipeGoLists
-    case RecipeGoBookmarks
+//    case RecipeGoLists
+//    case RecipeGoBookmarks
     case RecipeGoLogout
     
     var description: String
@@ -19,8 +19,8 @@ enum RecipeGoSideMenuViewModel: Int, CaseIterable
         switch self
         {
         case .RecipeGoProfile: return "Profile"
-        case .RecipeGoLists: return "Lists"
-        case .RecipeGoBookmarks: return "Bookmarks"
+//        case .RecipeGoLists: return "Lists"
+//        case .RecipeGoBookmarks: return "Bookmarks"
         case .RecipeGoLogout: return "Logout"
         }
     }
@@ -30,8 +30,8 @@ enum RecipeGoSideMenuViewModel: Int, CaseIterable
         switch self
         {
         case .RecipeGoProfile: return "person"
-        case .RecipeGoLists: return "list.bullet"
-        case .RecipeGoBookmarks: return "bookmark"
+//        case .RecipeGoLists: return "list.bullet"
+//        case .RecipeGoBookmarks: return "bookmark"
         case .RecipeGoLogout: return "arrow.left.square"
         }
     }

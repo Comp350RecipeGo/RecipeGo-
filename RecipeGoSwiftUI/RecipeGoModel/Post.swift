@@ -19,4 +19,5 @@ struct Post: Identifiable, Decodable, Hashable
     var user: User?
     var postLiked: Bool? = false
     var postPinned: Bool? = false
+    let title: String 
 }

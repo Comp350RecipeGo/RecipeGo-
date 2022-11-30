@@ -10,54 +10,47 @@ import SwiftUI
 struct RecipeGoNewPostView: View
 {
     @State private var RecipeCaption = ""
+    @State var Title = ""
+
     @Environment(\.presentationMode) var presentationState
     @ObservedObject var ViewModel = RecipeGoUploadPostViewModel()
-    
+
     var body: some View
     {
-    
-        VStack
+
+    VStack
+    {
+        HStack
         {
-            HStack
-            {
-                Button
-                {
-                    presentationState.wrappedValue.dismiss()
-                }
-            label:
-                {
-                    Text("Cancel")
-                        .foregroundColor(.green)
-                }
-                
-                Spacer()
-                
-                Button
-                {
-                    ViewModel.uploadPost(withCaption: RecipeCaption)
-                }
-            label:
-                {
-                    Text("Share Recipe")
-                        .bold()
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 10)
-                        .background(.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                
-            }
-            .padding()
+            Spacer()
             
-            HStack(alignment: .top)
+            Button
             {
-                
-                RecipeGoTextView("Post your recipe here!", text: $RecipeCaption)
+                ViewModel.uploadPost(withCaption: RecipeCaption, withTitle: Title)
             }
-            .padding()
+            label:
+            {
+                Text("Add")
+                    .bold()
+                    .foregroundColor(.green)
+            }
         }
-        .onReceive(ViewModel.$postUploaded)
+        .padding()
+        
+        HStack
+        {
+            Form
+            {
+                Section(header: Text("Recipe Details")) {
+                    TextField("Name", text: $Title)
+                }
+                Section(header: Text("Directions")) {
+                    TextField("...", text: $RecipeCaption)
+                }
+            }
+        }
+    }
+    .onReceive(ViewModel.$postUploaded)
         {
             uploadSuccessfull in
             if uploadSuccessfull
@@ -68,10 +61,3 @@ struct RecipeGoNewPostView: View
     }
 }
 
-struct RecipeGoNewPostView_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
-        RecipeGoNewPostView()
-    }
-}

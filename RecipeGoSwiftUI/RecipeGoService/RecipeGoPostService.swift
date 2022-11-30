@@ -9,12 +9,13 @@ import Firebase
 
 struct RecipeGoPostService
 {
-    func uploadPost(caption: String, completion: @escaping(Bool) -> Void)
+    func uploadPost(caption: String, title: String,  completion: @escaping(Bool) -> Void)
     {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let data = ["uid": uid,
                     "caption": caption,
+                    "title": title,
                     "likes": 0,
                     "pins": 0,
                     "timestamp": Timestamp(date: Date())] as [String : Any]

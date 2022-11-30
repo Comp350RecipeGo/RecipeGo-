@@ -31,8 +31,6 @@ struct RecipeGoSideMenuView: View
                             .font(.caption)
                             .foregroundColor(.gray)
                     }
-                    RecipeGoUserStatsView()
-                        .padding(.vertical)
                 }
                 .padding(.leading)
                 
